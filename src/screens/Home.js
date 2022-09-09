@@ -5,7 +5,10 @@ const Home = ({navigation}) => {
   return (
     <View>
       <Text style={{fontSize: 25}}>Testing App</Text>
-      <Button onPress={() => navigation.navigate('Profile')} title="Route" />
+      <Button
+        onPress={() => navigation.navigate('Profile', {id: 'none'})}
+        title="Route"
+      />
     </View>
   );
 };
