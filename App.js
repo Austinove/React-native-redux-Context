@@ -3,10 +3,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/screens/Home';
 import Profile from './src/screens/Profile';
+import {Provider} from './src/context/BlogContext';
+//for many context files imports you use a reference e.g
+//import { Provider as BlogProvider } from '../context/BlogContext';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -20,3 +23,11 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+export default () => {
+  return (
+    <Provider>
+      <App />
+    </Provider>
+  );
+};
