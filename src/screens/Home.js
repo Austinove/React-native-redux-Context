@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, version} from 'react';
 import {
   View,
   Text,
@@ -50,12 +50,12 @@ const Home = ({navigation}) => {
   );
 };
 
-Home.navigationOptions = () => {
-  return {
-    headerTitle: 'Test App',
-    headerRight: <MaterialCommunityIcons name="plus" size={30} />,
-  };
-};
+// Home.navigationOptions = () => {
+//   return {
+//     // headerTitle: 'Test App',
+//     headerRight: () => <MaterialCommunityIcons name="plus" size={30} />,
+//   };
+// };
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+
 // button: {
 //   alignItems: 'center',
 //   justifyContent: 'center',

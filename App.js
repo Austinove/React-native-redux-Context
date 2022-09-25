@@ -1,4 +1,5 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -20,7 +21,7 @@ function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{
+          options={({route, navigation}) => ({
             title: 'Test App',
             headerStyle: {
               backgroundColor: '#d8d8d8', //Set Header color
@@ -29,8 +30,13 @@ function App() {
             headerTitleStyle: {
               fontWeight: 'bold', //Set Header text style
             },
-            headerRight: () => <MaterialCommunityIcons name="plus" size={30} />,
-          }}
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('CreateScreen')}>
+                <MaterialCommunityIcons name="plus" size={30} />
+              </TouchableOpacity>
+            ),
+          })}
         />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="ShowScreen" component={ShowScreen} />
