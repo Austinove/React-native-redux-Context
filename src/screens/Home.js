@@ -17,8 +17,9 @@ const Home = ({navigation}) => {
   const {state, addBlogPost, deleteBlogPost} = useContext(Context);
   return (
     <View>
-      <Text style={{fontSize: 25}}>Testing App</Text>
-      <Button onPress={addBlogPost} title="Add Blog" />
+      <Text style={{fontSize: 15, marginHorizontal: 15, marginVertical: 10}}>
+        Click plus icon to add post
+      </Text>
       <FlatList
         data={state}
         keyExtractor={blogPost => blogPost.title}
@@ -41,12 +42,19 @@ const Home = ({navigation}) => {
           );
         }}
       />
-      <Button
+      {/* <Button
         onPress={() => navigation.navigate('Profile', {id: 'none'})}
         title="Route"
-      />
+      /> */}
     </View>
   );
+};
+
+Home.navigationOptions = () => {
+  return {
+    headerTitle: 'Test App',
+    headerRight: <MaterialCommunityIcons name="plus" size={30} />,
+  };
 };
 const styles = StyleSheet.create({
   row: {
@@ -63,30 +71,30 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 24,
   },
-  // button: {
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   paddingVertical: 5,
-  //   paddingHorizontal: 5,
-  //   // marginHorizontal: 140,
-  //   width: 50,
-  //   position: 'relative',
-  //   bottom: 15,
-  //   left: 250,
-  //   borderRadius: 15,
-  //   elevation: 3,
-  //   backgroundColor: 'black',
-  // },
-  // flatlistItem: {
-  //   marginTop: 20,
-  // },
-  // text: {
-  //   fontSize: 12,
-  //   lineHeight: 21,
-  //   fontWeight: 'bold',
-  //   letterSpacing: 0.25,
-  //   color: 'white',
-  // },
 });
+// button: {
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   paddingVertical: 5,
+//   paddingHorizontal: 5,
+//   // marginHorizontal: 140,
+//   width: 50,
+//   position: 'relative',
+//   bottom: 15,
+//   left: 250,
+//   borderRadius: 15,
+//   elevation: 3,
+//   backgroundColor: 'black',
+// },
+// flatlistItem: {
+//   marginTop: 20,
+// },
+// text: {
+//   fontSize: 12,
+//   lineHeight: 21,
+//   fontWeight: 'bold',
+//   letterSpacing: 0.25,
+//   color: 'white',
+// },
 
 export default Home;
