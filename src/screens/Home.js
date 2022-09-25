@@ -14,7 +14,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 //import { Context as BlogContext } from '../context/BlogContext';
 
 const Home = ({navigation}) => {
-  const {state, addBlogPost} = useContext(Context);
+  const {state, addBlogPost, deleteBlogPost} = useContext(Context);
   return (
     <View>
       <Text style={{fontSize: 25}}>Testing App</Text>
@@ -24,14 +24,20 @@ const Home = ({navigation}) => {
         keyExtractor={blogPost => blogPost.title}
         renderItem={({item}) => {
           return (
-            <View style={styles.row}>
-              <Text style={styles.title}>
-                {item.title} - {item.id}
-              </Text>
-              <TouchableOpacity onPress={addBlogPost}>
-                <MaterialCommunityIcons name="trash-can" style={styles.icon} />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ShowScreen', {id: item.id})}>
+              <View style={styles.row}>
+                <Text style={styles.title}>
+                  {item.title} - {item.id}
+                </Text>
+                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                  <MaterialCommunityIcons
+                    name="trash-can"
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
           );
         }}
       />
