@@ -1,4 +1,4 @@
-import React, {useContext, version} from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -37,10 +37,6 @@ const Home = ({navigation}) => {
                     style={styles.icon}
                   />
                 </TouchableOpacity>
-                {/* <TouchableOpacity
-                  onPress={() => navigation.navigate('EditScreen')}>
-                  <Text style={styles.text}>Edit</Text>
-                </TouchableOpacity> */}
                 <Button
                   onPress={() =>
                     navigation.navigate('EditScreen', {id: item.id})
