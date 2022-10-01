@@ -2,21 +2,21 @@ import React, {useContext, useState} from 'react';
 import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
 import {Context} from '../context/BlogContext';
 
-const CreateScreen = ({route, navigation}) => {
-  //   const {state} = useContext(Context);
-  //   const blogPost = state.find(blogPost => blogPost.id === route.params.id);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const {addBlogPost} = useContext(Context);
+const EditScreen = ({route, navigation}) => {
+  const {state} = useContext(Context);
+  const blogPost = state.find(blogPost => blogPost.id === route.params.id);
+  const [title, setTitle] = useState(blogPost.title);
+  const [content, setContent] = useState(blogPost.content);
+  const {editBlogPost} = useContext(Context);
   return (
     <View style={styles.view}>
-      <Text style={styles.label}>Enter Title: </Text>
+      <Text style={styles.label}>Edit Title: </Text>
       <TextInput
         style={styles.input}
         value={title}
         onChangeText={text => setTitle(text)}
       />
-      <Text style={styles.label}>Enter Content: </Text>
+      <Text style={styles.label}>Edit Content: </Text>
       <TextInput
         style={styles.input1}
         value={content}
@@ -24,12 +24,12 @@ const CreateScreen = ({route, navigation}) => {
       />
       <Button
         onPress={() => {
-          addBlogPost(title, content, () => {
+          editBlogPost(title, content, () => {
             navigation.navigate('Home');
           });
           // navigation.navigate('Home');
         }}
-        title="Add Blog Post"
+        title="Save Blog Post"
       />
     </View>
   );
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateScreen;
+export default EditScreen;
