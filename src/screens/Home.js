@@ -1,4 +1,4 @@
-import React, {useContext, version} from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -14,7 +14,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 //import { Context as BlogContext } from '../context/BlogContext';
 
 const Home = ({navigation}) => {
-  const {state, addBlogPost, deleteBlogPost} = useContext(Context);
+  const {state, deleteBlogPost} = useContext(Context);
   return (
     <View>
       <Text style={{fontSize: 15, marginHorizontal: 15, marginVertical: 10}}>
@@ -37,6 +37,12 @@ const Home = ({navigation}) => {
                     style={styles.icon}
                   />
                 </TouchableOpacity>
+                <Button
+                  onPress={() =>
+                    navigation.navigate('EditScreen', {id: item.id})
+                  }
+                  title="Edit"
+                />
               </View>
             </TouchableOpacity>
           );
@@ -71,31 +77,30 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 24,
   },
+  // button: {
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   paddingVertical: 5,
+  //   paddingHorizontal: 5,
+  //   // marginHorizontal: 140,
+  //   width: 50,
+  //   position: 'relative',
+  //   bottom: 15,
+  //   left: 250,
+  //   borderRadius: 15,
+  //   elevation: 3,
+  //   backgroundColor: 'black',
+  // },
+  // flatlistItem: {
+  //   marginTop: 20,
+  // },
+  // text: {
+  //   fontSize: 12,
+  //   lineHeight: 21,
+  //   fontWeight: 'bold',
+  //   letterSpacing: 0.25,
+  //   color: 'white',
+  // },
 });
-
-// button: {
-//   alignItems: 'center',
-//   justifyContent: 'center',
-//   paddingVertical: 5,
-//   paddingHorizontal: 5,
-//   // marginHorizontal: 140,
-//   width: 50,
-//   position: 'relative',
-//   bottom: 15,
-//   left: 250,
-//   borderRadius: 15,
-//   elevation: 3,
-//   backgroundColor: 'black',
-// },
-// flatlistItem: {
-//   marginTop: 20,
-// },
-// text: {
-//   fontSize: 12,
-//   lineHeight: 21,
-//   fontWeight: 'bold',
-//   letterSpacing: 0.25,
-//   color: 'white',
-// },
 
 export default Home;

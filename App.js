@@ -7,6 +7,7 @@ import Home from './src/screens/Home';
 import Profile from './src/screens/Profile';
 import ShowScreen from './src/screens/showScreen';
 import CreateScreen from './src/screens/CreateScreen';
+import EditScreen from './src/screens/EditScreen';
 import {Provider} from './src/context/BlogContext';
 
 //for many context files imports you use a reference e.g
@@ -41,6 +42,7 @@ function App() {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="ShowScreen" component={ShowScreen} />
         <Stack.Screen name="CreateScreen" component={CreateScreen} />
+        <Stack.Screen name="EditScreen" component={EditScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
